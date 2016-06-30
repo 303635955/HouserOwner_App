@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="#F3F3F3">
+    
+	<RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radio0"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:checked="true"
+            android:button="@null"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/radiobut_textcolor"
+            android:text="主页" />
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/radiobut_textcolor"
+            android:text="房屋" />
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/radiobut_textcolor"
+            android:text="租客" />
+    </RadioGroup>
+</LinearLayout>

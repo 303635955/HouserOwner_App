@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+     android:background="#FFFFFF">
+
+    <LinearLayout
+        android:id="@+id/houseinfo_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#05c0af"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="房间信息"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/houseinfo_number_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/houseinfo_top"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="房间数量:"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_number_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/houseinfo_number_one"
+        android:layout_alignTop="@id/houseinfo_number_one"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/houseinfo_number_one"
+        android:text="31"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_user_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/houseinfo_number_one"
+        android:layout_below="@id/houseinfo_number_one"
+        android:layout_marginTop="10dp"
+        android:text="房屋用途:"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_user_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/houseinfo_user_one"
+        android:layout_alignTop="@id/houseinfo_user_one"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/houseinfo_user_one"
+        android:text="住宅"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_floor_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/houseinfo_user_one"
+        android:layout_below="@id/houseinfo_user_one"
+        android:layout_marginTop="10dp"
+        android:text="楼层数:"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_floor_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/houseinfo_floor_one"
+        android:layout_alignTop="@id/houseinfo_floor_one"
+        android:layout_toRightOf="@id/houseinfo_floor_one"
+        android:layout_alignLeft="@id/houseinfo_user_two"
+        android:text="12"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_house_owner_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/houseinfo_floor_one"
+        android:layout_below="@id/houseinfo_floor_one"
+        android:layout_marginTop="10dp"
+        android:text="户  主  :"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_house_owner_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/houseinfo_house_owner_one"
+        android:layout_alignTop="@id/houseinfo_house_owner_one"
+        android:layout_alignLeft="@id/houseinfo_floor_two"
+        android:layout_toRightOf="@id/houseinfo_house_owner_one"
+        android:text="王二"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_owner_call_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/houseinfo_house_owner_one"
+        android:layout_below="@id/houseinfo_house_owner_one"
+        android:layout_marginTop="10dp"
+        android:text="户主电话:"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_owner_call_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/houseinfo_owner_call_one"
+        android:layout_alignTop="@id/houseinfo_owner_call_one"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/houseinfo_owner_call_one"
+        android:text="1502161651"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_adress_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/houseinfo_owner_call_one"
+        android:layout_alignLeft="@id/houseinfo_owner_call_one"
+        android:text="详细地址:"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/houseinfo_adress_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/houseinfo_adress_one"
+        android:layout_alignTop="@id/houseinfo_adress_one"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/houseinfo_adress_one"
+        android:text="航空路是路"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/houseinfo_look_personinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/houseinfo_adress_one"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"
+            android:src="@drawable/add_public_group" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="查看人员信息"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/houseinfo_set_personinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/houseinfo_adress_one"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_toRightOf="@id/houseinfo_look_personinfo"
+        android:orientation="vertical"
+         android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"
+            android:src="@drawable/chat_file_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登记人员"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="#05c0af"
+        android:text="修改信息"
+        android:textSize="20sp" />
+
+</RelativeLayout>
