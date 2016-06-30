@@ -70,11 +70,11 @@ public class PersonInfoFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.houseinfo_main, null);
-		Bundle data = getArguments();
+		/*Bundle data = getArguments();
 		id = data.getString("TEXT");
 		Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
 		findView();
-		getHouseMessage("", handler);
+		getHouseMessage("", handler);*/
 		
 		return view;
 	}
@@ -90,16 +90,16 @@ public class PersonInfoFragment extends Fragment {
 	}
 
 	public void findView() {
-		loadlinear = (LinearLayout) view.findViewById(R.id.loadlinear);
+/*		loadlinear = (LinearLayout) view.findViewById(R.id.loadlinear);
 		showtext = (TextView) view.findViewById(R.id.showtext);
-		listView = (ExpandableListView) view
-				.findViewById(R.id.expandable_list_view);
+//		listView = (ExpandableListView) view
+//				.findViewById(R.id.expandable_list_view);
 		gifimg = (ImageView) view.findViewById(R.id.gifimg);
 		// mTitle = (TextView) view.findViewById(R.id.list_title_text);
 
 		gifimg.setBackgroundResource(R.anim.animation);
 		animaition = (AnimationDrawable) gifimg.getBackground();
-		animaition.setOneShot(false);
+		animaition.setOneShot(false);*/
 	}
 
 	public void initListView(List<Map<String, String>> houseinfoList2) {

@@ -24,6 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.yunguo.fragment.HomePageActivity"></activity>
+        <activity android:name="com.yunguo.fragment.HouseInfoActivity"></activity>
         <activity 
             android:name="com.yunguo.houserowner_app.FirstActivity"
             android:theme="@android:style/Theme.NoTitleBar">

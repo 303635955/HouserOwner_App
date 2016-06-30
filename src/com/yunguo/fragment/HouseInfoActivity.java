@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -24,14 +25,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.yunguo.Bean.HouseBean;
 import com.yunguo.Util.HTTPUtil;
+import com.yunguo.Util.QQListView;
 import com.yunguo.houserowner.adpter.ExpandInfoAdapter;
 import com.yunguo.houserowner.adpter.HouseAdapter;
+import com.yunguo.houserowner.adpter.QQListAdapter;
 import com.yunguo.houserowner_app.R;
 
-public class HouseInfoFragment extends Fragment {
+public class HouseInfoActivity extends Activity {
 	private String masg = ""; // 提示消息
 	public final static String NAME = "房间名:";
 	public final static String Floor = "楼层:";
@@ -41,104 +43,61 @@ public class HouseInfoFragment extends Fragment {
 	public final static String PHONE = "电话:";
 	public final static String Adress = "地址:";
 
-	private static HTTPUtil httppost;
-	private String codestr;
-
-	private ExpandableListView listView;
-	private TextView mTitle, showtext;
-	private List<Map<String, String>> houseinfoList =new ArrayList<>();;
-	public List<String> group;
-	public List<List<String>> child;
-	public ExpandInfoAdapter adapter;
-
-	private ImageView gifimg;
-	private AnimationDrawable animaition;
-	private LinearLayout loadlinear;
-
-	Map<String, String> map = new HashMap<>();
-	/**
-	 * listview
-	 */
-	/*
-	 * private PullToRefreshListView HistoryMessge_list;
-	 *//**
-	 * 房屋列表适配器
-	 */
-	/*
-	 * private HouseAdapter messgeListAdapter; private List<Map<String, String>>
-	 * list; private List<HouseBean> data = new ArrayList<HouseBean>();
-	 */
-
-	private View view;
-
-	private String id;
-
+	private QQListView listView;
+	private List<Map<String, String>> groups = new ArrayList<Map<String, String>>();
+    private List<List<Map<String, String>>> childs = new ArrayList<List<Map<String, String>>>();
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.houseinfo_main, null);
-		Bundle data = getArguments();
-		id = data.getString("TEXT");
-		Toast.makeText(getActivity(), id, Toast.LENGTH_SHORT).show();
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.houseinfo_main);
 		findView();
-		getHouseMessage("", handler);
-		return view;
-	}
-
-	private void setListViewOnChildClickListener() {
-		listView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-			public boolean onChildClick(ExpandableListView parent, View v,
-					int groupPosition, int childPosition, long id) {
-				return true;
-			}
-		});
+		addItemByValue();
+		initListView();
 	}
 
 	public void findView() {
-		loadlinear = (LinearLayout) view.findViewById(R.id.loadlinear);
-		showtext = (TextView) view.findViewById(R.id.showtext);
-		listView = (ExpandableListView) view
-				.findViewById(R.id.expandable_list_view);
-		gifimg = (ImageView) view.findViewById(R.id.gifimg);
-		// mTitle = (TextView) view.findViewById(R.id.list_title_text);
-
-		gifimg.setBackgroundResource(R.anim.animation);
-		animaition = (AnimationDrawable) gifimg.getBackground();
-		animaition.setOneShot(false);
+		listView = (QQListView) findViewById(R.id.home_expandableListView);
 	}
 
-	public void initListView(List<Map<String, String>> list) {
-		initialOther();
-		for (int i = 0; i < list.size(); i++) {
-			 map=(HashMap)list.get(i);
-			 addItemByValue(map);
-		}
-		adapter = new ExpandInfoAdapter(getActivity(), group, child);
+	public void initListView() {
+		listView.setHeaderView(getLayoutInflater().inflate(R.layout.group_header,listView,false));
+	        
+		QQListAdapter adapter = new QQListAdapter(   
+                this,listView, groups, R.layout.group, new String[] { "HouseName" },   
+                new int[] { R.id.HouseName }, childs, R.layout.child,   
+                new String[] { "HouseId","HouseName","Floor","Number","Usage","Householder","Tel","Address"}, 
+                new int[] { R.id.HouseId,R.id.HouseName,R.id.Floor,R.id.Number,R.id.Usage,R.id.Householder,R.id.Tel,R.id.Address});     
 		listView.setAdapter(adapter);
 	}
 
-	public void initialOther() {
-		group = new ArrayList<String>();
-		child = new ArrayList<List<String>>();
-	}
-
-	public void addItemByValue(Map<String, String> map) {
-		group.add(map.get("Name"));
-
-		List<String> item = new ArrayList<String>();
-		item.add(NAME + map.get("Name"));
-		item.add(Floor + map.get("FloorCount"));
-		item.add(Number + map.get("RoomCount"));
-		item.add(Use + map.get("Useage"));
-		item.add(Owner + map.get("OwnerName"));
-		item.add(PHONE + map.get("TelNo"));
-		item.add(Adress + map.get("Address"));
-		child.add(item);
+	
+	public void addItemByValue() {
+		
+		for (int i = 0; i < 10; i++) {
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("HouseName", "保利新天地"+i);
+			groups.add(map);
+		}
+		
+		for (int i = 0; i < 10; i++) {
+			List<Map<String,String>> list = new ArrayList<Map<String,String>>();
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("HouseId", "编号："+"0218"+i);
+			map.put("HouseName", "房屋："+"保利新天地"+i);
+			map.put("Floor", "楼层："+1+i+"楼");
+			map.put("Number","数量："+i+1+"间" );
+			map.put("Usage", "用途：居住");
+			map.put("Householder","户主：张赛");
+			map.put("Tel", "电话：17780602344");
+			map.put("Address","地址：成都市百草路保利国际");
+			list.add(map);
+			childs.add(list);
+		}
 	}
 
 	/**
 	 * 刷新界面
-	 */
+	 *//*
 	Handler handler = new Handler() {
 		@Override
 		public void handleMessage(android.os.Message msg) {
@@ -170,9 +129,9 @@ public class HouseInfoFragment extends Fragment {
 		};
 	};
 
-	/**
+	*//**
 	 * 请求网络数据
-	 */
+	 *//*
 	public void getHouseMessage(final String pramr, final Handler handler) {
 		animaition.start();
 		new Thread(new Runnable() {
@@ -237,5 +196,5 @@ public class HouseInfoFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-	}
+	}*/
 }
