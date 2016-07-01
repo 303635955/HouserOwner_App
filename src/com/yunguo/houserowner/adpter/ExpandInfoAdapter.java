@@ -22,7 +22,6 @@ import android.widget.ExpandableListView.ExpandableListContextMenuInfo;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.yunguo.houserowner.adpter.HouseAdapter.ViewHolder;
 import com.yunguo.houserowner_app.R;
 
 public class ExpandInfoAdapter extends BaseExpandableListAdapter {

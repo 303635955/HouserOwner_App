@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.yunguo.houserowner_app.IDCardCode;
 import com.yunguo.houserowner_app.R;
+import com.yunguo.houserowner_app.RegistRentPerson;
 
 public class HomePageActivity extends Activity implements OnClickListener{
 	
@@ -55,7 +57,8 @@ public class HomePageActivity extends Activity implements OnClickListener{
 		
 			break;
 		case R.id.addtenant:
-		
+			Intent intentadd = new Intent(HomePageActivity.this,IDCardCode.class);
+			startActivity(intentadd);
 			break;
 	
 		}

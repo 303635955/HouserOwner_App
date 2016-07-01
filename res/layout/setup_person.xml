@@ -1,35 +1,61 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="#DEDDDE"
+    android:orientation="vertical"
+    android:weightSum="5" >
 
     <LinearLayout
         android:id="@+id/houseinfo_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
         android:background="#05c0af"
         android:gravity="center"
         android:orientation="horizontal" >
-
+		<TextView 
+		    android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:text="步骤:"
+            android:textColor="#000000"
+            android:textSize="20sp"/>
+		<TextView 
+		    android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="20sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:text="人员登记"
+            android:layout_marginLeft="20dp"
+            android:text="身份证信息填写"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="2"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="3"
             android:textColor="#000000"
             android:textSize="20sp" />
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/houseinfo_top"
-        android:background="#FFFFFF" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#F6F6F6"
+            android:layout_height="0dp"
+            android:background="#DEDDDE"
+            android:layout_weight="4"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -39,27 +65,103 @@
                 android:gravity="center"
                 android:orientation="horizontal" >
 
-                <TextView
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:text="姓名："
-                    android:textColor="#000000"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/person_name_text"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittext" />
-
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="*"
-                    android:textColor="#FE0000" />
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="姓名："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <EditText
+                        android:id="@+id/person_name_text"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="必填信息"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="90dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="身份证号："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <EditText
+                        android:id="@+id/person_cardid_text"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="center"
+                        android:text="必填信息"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -72,55 +174,17 @@
                 <TextView
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_margin="20dp"
                     android:gravity="center"
-                    android:text="身份证号："
+                    android:text="性别："
                     android:textColor="#000000"
                     android:textSize="15sp" />
 
-                <EditText
-                    android:id="@+id/person_cardid_text"
+                <Spinner
+                    android:id="@+id/Spinner_sex"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittext" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="*"
-                    android:textColor="#FE0000" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/houseinfo_top"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:text="入住房屋："
-                    android:textColor="#000000"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/person_housename_text"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edittext" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="*"
-                    android:textColor="#FE0000" />
             </LinearLayout>
 
             <LinearLayout
@@ -133,24 +197,17 @@
                 <TextView
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_margin="15dp"
                     android:gravity="center"
-                    android:text="房间号："
+                    android:text="民族："
                     android:textColor="#000000"
                     android:textSize="15sp" />
 
-                <EditText
-                    android:id="@+id/person_houseid_text"
+                <Spinner
+                    android:id="@+id/Spinner_nationnal"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittext" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="*"
-                    android:textColor="#FE0000" />
             </LinearLayout>
 
             <LinearLayout
@@ -163,24 +220,17 @@
                 <TextView
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:text="门禁卡号："
+                    android:text="发证机关："
                     android:textColor="#000000"
                     android:textSize="15sp" />
 
                 <EditText
-                    android:id="@+id/person_housedoorid_text"
+                    android:id="@+id/office"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittext" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="*"
-                    android:textColor="#FE0000" />
             </LinearLayout>
 
             <LinearLayout
@@ -193,24 +243,17 @@
                 <TextView
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:text="开始时间："
+                    android:text="发证日期："
                     android:textColor="#000000"
                     android:textSize="15sp" />
 
                 <EditText
-                    android:id="@+id/person_begintime_text"
+                    android:id="@+id/carddate"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittext" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="*"
-                    android:textColor="#FE0000" />
             </LinearLayout>
 
             <LinearLayout
@@ -223,55 +266,71 @@
                 <TextView
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_margin="10dp"
                     android:gravity="center"
-                    android:text="结束时间："
+                    android:text="有效期："
                     android:textColor="#000000"
                     android:textSize="15sp" />
 
                 <EditText
-                    android:id="@+id/person_endtime_text"
+                    android:id="@+id/date"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edittext" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="*"
-                    android:textColor="#FE0000" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="个人身份信息(选填)" />
-
-                <include
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    layout="@layout/personinfo_view" />
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
                     android:layout_height="wrap_content"
-                    android:text="其他信息(选填)" />
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:text="居住地址："
+                    android:textColor="#000000"
+                    android:textSize="15sp" />
 
-                <include
-                    android:layout_width="match_parent"
+                <EditText
+                    android:id="@+id/RentAdress"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    layout="@layout/personinfo_other_view" />
+                    android:background="@drawable/edittext" />
+            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 
-    <Button
+      <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:background="#05c0af"
-        android:text="修改信息"
-        android:textColor="#000000"
-        android:textSize="20sp" />
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal" >
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/regist_info_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="#05c0af"
+            android:text="上一步"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/regist_info_two"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="#05c0af"
+            android:text="下一步"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>

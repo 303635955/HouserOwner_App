@@ -26,7 +26,6 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.yunguo.Bean.HouseBean;
 import com.yunguo.Util.HTTPUtil;
 import com.yunguo.houserowner.adpter.ExpandInfoAdapter;
-import com.yunguo.houserowner.adpter.HouseAdapter;
 import com.yunguo.houserowner_app.R;
 
 public class PersonInfoFragment extends Fragment {
@@ -60,7 +59,6 @@ public class PersonInfoFragment extends Fragment {
 	/**
 	 * ∑øŒ›¡–±Ì  ≈‰∆˜
 	 */
-	private HouseAdapter messgeListAdapter;
 	private List<Map<String, String>> list;
 	private List<HouseBean> data = new ArrayList<HouseBean>();
 

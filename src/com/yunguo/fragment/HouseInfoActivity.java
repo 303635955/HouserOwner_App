@@ -29,7 +29,6 @@ import com.yunguo.Bean.HouseBean;
 import com.yunguo.Util.HTTPUtil;
 import com.yunguo.Util.QQListView;
 import com.yunguo.houserowner.adpter.ExpandInfoAdapter;
-import com.yunguo.houserowner.adpter.HouseAdapter;
 import com.yunguo.houserowner.adpter.QQListAdapter;
 import com.yunguo.houserowner_app.R;
 
