@@ -85,11 +85,13 @@ public class AddPersonActivity extends Activity {
 		listView.setOnRefreshListener(new OnRefreshListener2() {
 			@Override
 			public void onPullDownToRefresh(PullToRefreshBase refreshView) {
+				fla = true;
 				new Thread(thread).start();
 			}
 
 			@Override
 			public void onPullUpToRefresh(PullToRefreshBase refreshView) {
+				fla = false;
 				new Thread(thread).start();
 			}
 		});
@@ -103,6 +105,7 @@ public class AddPersonActivity extends Activity {
 				Intent intent = new Intent(AddPersonActivity.this,IDCardCode.class);
 				SetUpRent.getSetUpRent().setHouseId(map.get("HouseId"));
 				startActivity(intent);
+				
 			}
 		});
 		
@@ -161,7 +164,7 @@ public class AddPersonActivity extends Activity {
 		@Override
 		public void run() {
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

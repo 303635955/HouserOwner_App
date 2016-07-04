@@ -40,11 +40,11 @@
         <activity android:name="com.yunguo.fragment.PersonInfoTenantInfoActivity"></activity>
         <activity android:name="com.yunguo.houserowner_app.AddPersonActivity"></activity>
         <activity android:name="com.yunguo.fragment.PersonManageActivity"></activity>
-        
+        <activity android:name="com.yunguo.houserowner_app.RemoteOpenDoorActivity"></activity>
+        <activity android:name="com.yunguo.houserowner_app.OpenDoorActivity"></activity>
         
         <activity 
             android:name="com.yunguo.houserowner_app.FirstActivity"
->>>>>>> ,2016/7/1 李志豪
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity

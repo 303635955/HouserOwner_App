@@ -17,8 +17,10 @@ import com.yunguo.houserowner_app.AddPersonActivity;
 import com.yunguo.houserowner_app.IDCardCode;
 import com.yunguo.houserowner_app.LoginActivity;
 import com.yunguo.houserowner_app.MainActivity;
+import com.yunguo.houserowner_app.OpenDoorActivity;
 import com.yunguo.houserowner_app.R;
 import com.yunguo.houserowner_app.RegistRentPerson;
+import com.yunguo.houserowner_app.RemoteOpenDoorActivity;
 
 public class HomePageActivity extends Activity implements OnClickListener{
 	
@@ -69,7 +71,8 @@ public class HomePageActivity extends Activity implements OnClickListener{
 			startActivity(intent2);
 			break;
 		case R.id.OpenDoor:
-		
+			Intent intent3 = new Intent(HomePageActivity.this,OpenDoorActivity.class);
+			startActivity(intent3);
 			break;
 		case R.id.addtenant:
 			Intent intentadd = new Intent(HomePageActivity.this,AddPersonActivity.class);

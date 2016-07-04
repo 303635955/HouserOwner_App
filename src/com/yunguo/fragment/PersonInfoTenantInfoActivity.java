@@ -1,17 +1,17 @@
 package com.yunguo.fragment;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
@@ -20,13 +20,14 @@ import com.yunguo.Util.HTTPUtil;
 import com.yunguo.houserowner.adpter.MyHouseInfoExpandableListAdapter;
 import com.yunguo.houserowner.adpter.MyPersonInfoExpandableListAdapter;
 import com.yunguo.houserowner_app.R;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.ContactsContract.Contacts.Data;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -226,6 +227,7 @@ public class PersonInfoTenantInfoActivity extends Activity{
 	};
 
 
+	@SuppressLint("SimpleDateFormat")
 	public List<List> getHouseInfo(String res) {
 	 List<List> tmpdata = new ArrayList<List>();
 	 List<List<Map<String,String>>> tmplist1 = new ArrayList<List<Map<String,String>>>();
@@ -259,7 +261,6 @@ public class PersonInfoTenantInfoActivity extends Activity{
 	                tmplist1.add(tmplist);
 	                tmpdatalist.add(key);
 			}
-				
 			tmpdata.add(tmpdatalist);
 			tmpdata.add(tmplist1);
 		} catch (JSONException e) {
