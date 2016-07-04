@@ -29,6 +29,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.yunguo.Bean.SetUpRent;
 import com.yunguo.Util.HTTPUtil;
 import com.yunguo.houserowner.adpter.PersonAdapter;
 import com.yunguo.houserowner_app.R;
@@ -99,7 +100,7 @@ public class PersonInfoActivity extends Activity {
 					int position, long id) {
 				Map<String,String> map = (Map<String, String>) adapter.getItem(position-1);
 				Intent intent = new Intent(PersonInfoActivity.this,PersonInfoTenantInfoActivity.class);
-				intent.putExtra("HouseId", map.get("HouseId"));
+				SetUpRent.getSetUpRent().setHouseId(map.get("HouseId"));
 				startActivity(intent);
 			}
 		});
@@ -158,11 +159,6 @@ public class PersonInfoActivity extends Activity {
 	private Thread thread = new Thread(){
 		@Override
 		public void run() {
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			String url = "http://120.25.65.125:8118/HouseMobileApp/HouseListView";
 			Map<String, String> houseid = new HashMap<String, String>();
 			houseid.put("ownerId", "1544");

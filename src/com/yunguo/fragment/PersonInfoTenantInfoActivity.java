@@ -9,17 +9,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.yunguo.Bean.SetUpRent;
 import com.yunguo.Util.HTTPUtil;
 import com.yunguo.houserowner.adpter.MyHouseInfoExpandableListAdapter;
 import com.yunguo.houserowner.adpter.MyPersonInfoExpandableListAdapter;
 import com.yunguo.houserowner_app.R;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -27,12 +31,9 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.ContactsContract.Contacts.Data;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ImageView;
@@ -42,7 +43,6 @@ import android.widget.Toast;
 
 public class PersonInfoTenantInfoActivity extends Activity{
 	
-	private String HouseId = "";//房屋ID
 	private String masg = ""; // 提示消息
 	private Boolean fla = true; //记录上拉下拉
 	private PullToRefreshExpandableListView listView;
@@ -60,9 +60,6 @@ public class PersonInfoTenantInfoActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.houseinfotenant_activity);
-		
-		Intent intent = getIntent();
-		HouseId = intent.getStringExtra("HouseId");
 		
 		findView();
 		initListView();
@@ -160,7 +157,7 @@ public class PersonInfoTenantInfoActivity extends Activity{
 				masg = "查询成功！";
 				break;
 			case 1: 
-				masg = "您还没有房屋！";
+				masg = "没有数据！";
 				gifimg.setBackgroundResource(R.drawable.gou);
 				showtext.setText(masg);
 				break;
@@ -184,14 +181,9 @@ public class PersonInfoTenantInfoActivity extends Activity{
 	private Thread thread = new Thread(){
 		@Override
 		public void run() {
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			String url = "http://120.25.65.125:8118/HouseMobileApp/RentalInfo";
 			Map<String, String> houseid = new HashMap<String, String>();
-			houseid.put("HouseId", HouseId);
+			houseid.put("HouseId", SetUpRent.getSetUpRent().getHouseId());
 			JSONObject js = new JSONObject(houseid);
 			String str = js.toString();
 			String res = HTTPUtil.PostStringToUrl(url, str);
@@ -245,6 +237,7 @@ public class PersonInfoTenantInfoActivity extends Activity{
 	                for(int j=0;j<array.length();j++){ 
 	                	Map<String, String> map = new HashMap<String,String>();
 	                    JSONObject jsonobject = (JSONObject) array.opt(j);
+	                    map.put("UserId",jsonobject.getString("Id"));
 	                    map.put("DoorId",jsonobject.getString("RoomNo"));
 	                    map.put("UserName",jsonobject.getString("Name"));
 	                    map.put("IdCardNo",jsonobject.getString("IdCardNo"));

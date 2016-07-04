@@ -42,6 +42,8 @@
         <activity android:name="com.yunguo.fragment.PersonManageActivity"></activity>
         <activity android:name="com.yunguo.houserowner_app.RemoteOpenDoorActivity"></activity>
         <activity android:name="com.yunguo.houserowner_app.OpenDoorActivity"></activity>
+        <activity android:name="com.yunguo.houserowner_app.CardMessageActivity"></activity>
+        <activity android:name="com.yunguo.houserowner_app.AddPermissionActivity"></activity>
         
         <activity 
             android:name="com.yunguo.houserowner_app.FirstActivity"
