@@ -1,0 +1,334 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FAFAFA">
+    <LinearLayout
+        android:id="@+id/houseinfo_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#339999"
+        android:gravity="center"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="身份证信息填写"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </LinearLayout>
+    
+	<LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_below="@id/houseinfo_top"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical"
+        android:weightSum="9">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:background="#FAFAFA"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="3dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_weight="1"
+                        android:text="姓名："
+                        android:textColor="#000000"/>
+
+                    <EditText
+                        android:id="@+id/person_name_text"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="7dip"
+                        android:layout_marginBottom="7dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login"/>
+
+                </LinearLayout>
+                
+         		<TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_marginRight="30dip"
+                    android:text="必填信息"
+                    android:textColor="#5CA7BA"
+                    android:textSize="10sp" />
+       		<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_weight="1"
+                        android:text="身份证号："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/person_cardid_text"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="7dip"
+                        android:layout_marginBottom="7dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+                
+         		<TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_marginRight="30dip"
+                    android:text="必填信息"
+                    android:textColor="#5CA7BA"
+                    android:textSize="10sp" />
+         		
+       		<LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="性别："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <Spinner
+	                    android:id="@+id/Spinner_sex"
+	                    android:layout_width="0dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_marginTop="7dip"
+                        android:layout_marginBottom="7dip"
+	                     android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+	                    android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+         		
+         		<LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:layout_marginTop="3dp"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="民族："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <Spinner
+	                    android:id="@+id/Spinner_nationnal"
+	                    android:layout_width="0dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_marginTop="7dip"
+                        android:layout_marginBottom="7dip"
+	                    android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+	                    android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+                
+         		
+         		<LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:layout_marginTop="3dp"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="发证机关："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/office"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                       android:layout_marginTop="7dip"
+                        android:layout_marginBottom="7dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+                
+         		
+         		<LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:layout_marginTop="3dp"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="发证日期："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/carddate"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="7dip"
+                        android:layout_marginBottom="7dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+                
+         		
+         		<LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:layout_marginTop="3dp"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="有效期："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/date"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="7dip"
+                        android:layout_marginBottom="7dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+                
+         		<LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:layout_marginTop="3dp"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="居住地址："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                    <EditText
+                        android:id="@+id/RentAdress"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="7dip"
+                        android:layout_marginBottom="7dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login" />
+                </LinearLayout>
+        </LinearLayout>
+     </LinearLayout>
+        
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/regist_info_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dip"
+            android:layout_weight="1"
+            android:background="#5CA7BA"
+            android:text="上一步"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/regist_info_two"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dip"
+            android:layout_weight="1"
+            android:background="#5CA7BA"
+            android:text="下一步"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</RelativeLayout>
