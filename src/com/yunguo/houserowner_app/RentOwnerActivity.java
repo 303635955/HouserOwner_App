@@ -1,11 +1,13 @@
 package com.yunguo.houserowner_app;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.IDCardReader.utility.DoubleDatePickerDialog;
 import com.throrinstudio.android.common.libs.validator.Form;
 import com.throrinstudio.android.common.libs.validator.Validate;
 import com.throrinstudio.android.common.libs.validator.validator.NotEmptyValidator;
@@ -14,6 +16,7 @@ import com.yunguo.Bean.SetUpRent;
 import com.yunguo.Util.HTTPUtil;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +24,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -54,7 +59,7 @@ public class RentOwnerActivity extends Activity {
 		findview();
 		//添加点击事件
 		setclick();
-		new Thread(thread).start();
+		//new Thread(thread).start();
 	}
 
 	public void findview() {
@@ -104,22 +109,70 @@ public class RentOwnerActivity extends Activity {
 	}
 
 	public void setclick() {
+		person_begintime.setOnFocusChangeListener(new OnFocusChangeListener() {
+			Calendar c = Calendar.getInstance();
+			@Override
+			public void onFocusChange(View view, boolean hasFocus) {
+				// TODO Auto-generated method stub
+				Toast.makeText(getApplicationContext(), "此处被点击",Toast.LENGTH_SHORT).show();
+				if(hasFocus){
+					// 最后一个false表示不显示日期，如果要显示日期，最后参数可以是true或者不用输入
+					new DoubleDatePickerDialog(RentOwnerActivity.this, 0, new DoubleDatePickerDialog.OnDateSetListener() {
+						@Override
+						public void onDateSet(DatePicker startDatePicker, int startYear, int startMonthOfYear,
+								int startDayOfMonth, DatePicker endDatePicker, int endYear, int endMonthOfYear,
+								int endDayOfMonth) {
+							String textstartString = String.format("%d-%d-%d", startYear,
+									startMonthOfYear + 1, startDayOfMonth);
+							person_begintime.setText(textstartString);
+							String textendString = String.format("%d-%d-%d", endYear,
+									endMonthOfYear + 1, endDayOfMonth);
+							person_endtime.setText(textendString);
+						}
+					}, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DATE), false).show();
+				}
+			}
+		});
+		
+		person_endtime.setOnFocusChangeListener(new OnFocusChangeListener() {
+			Calendar c = Calendar.getInstance();
+			@Override
+			public void onFocusChange(View view, boolean hasFocus) {
+				// TODO Auto-generated method stub
+				Toast.makeText(getApplicationContext(), "此处被点击",Toast.LENGTH_SHORT).show();
+				if(hasFocus){
+					// 最后一个false表示不显示日期，如果要显示日期，最后参数可以是true或者不用输入
+					new DoubleDatePickerDialog(RentOwnerActivity.this, 0, new DoubleDatePickerDialog.OnDateSetListener() {
+						@Override
+						public void onDateSet(DatePicker startDatePicker, int startYear, int startMonthOfYear,
+								int startDayOfMonth, DatePicker endDatePicker, int endYear, int endMonthOfYear,
+								int endDayOfMonth) {
+							String textstartString = String.format("%d-%d-%d", startYear,
+									startMonthOfYear + 1, startDayOfMonth);
+							person_begintime.setText(textstartString);
+							String textendString = String.format("%d-%d-%d", endYear,
+									endMonthOfYear + 1, endDayOfMonth);
+							person_endtime.setText(textendString);
+						}
+					}, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DATE), false).show();
+				}
+			}
+		});
 		btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				InputCheckout();
 				if(form.validate()){
 					house.put("HouseName", person_housename.getText().toString());
-					house.put("HouseID", person_houseid.getText().toString());
-					house.put("HouseDoorCard", person_housecardid.getText().toString());
-					house.put("HouseBeginTime", person_begintime.getText().toString());
-					house.put("HouseEndTime", person_endtime.getText().toString());
+					house.put("RoomNo", person_houseid.getText().toString());
+					house.put("CardNoStr", person_housecardid.getText().toString());
+					house.put("beginTime", person_begintime.getText().toString());
+					house.put("endTime", person_endtime.getText().toString());
 					house.put("TelNo", person_call.getText().toString());
 					SetUpRent.getSetUpRent().setHousemap(house);
 					Intent intent = new Intent(getApplicationContext(),
 							RentOwnerOtherActivity.class);
 					startActivity(intent);
-					finish();
 				}else{
 					Toast.makeText(getApplicationContext(), "输入有误额", Toast.LENGTH_SHORT).show();
 				}
@@ -163,7 +216,7 @@ public class RentOwnerActivity extends Activity {
 	public void PostCarNo(){
 		Message message = new Message();
 		Map<String,String> map = new HashMap<String,String>();
-		map.put("HouseId", "169");
+		map.put("HouseId", SetUpRent.getSetUpRent().getHouseId());
 		try {
 			JSONObject js = new JSONObject(map.toString());
 			String res = HTTPUtil.PostStringToUrl("http://120.25.65.125:8118/HouseMobileApp/GetHouseLastSwipeCardNo", js.toString());

@@ -130,7 +130,8 @@ public class IDCardPostRequest {
 				
 				String number = data.getString("number");
 				bundle.putString("number", number);
-				bundle.putString("birth", number.substring(6, 14));
+				String birth = number.substring(6,10)+"-"+number.substring(10,12)+"-"+number.substring(12,14);
+				bundle.putString("birth", birth);
 				
 			} catch (JSONException e) {
 				e.printStackTrace();

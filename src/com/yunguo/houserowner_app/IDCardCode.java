@@ -395,7 +395,7 @@ public class IDCardCode extends Activity implements OnClickListener{
 					list.put("Name",tv_name.getText().toString());
 					list.put("Sex",  tv_sex.getText().toString());
 					list.put("Nation",tv_nation.getText().toString());
-					list.put("birth", tv_birth.getText().toString());
+					list.put("Birthday", tv_birth.getText().toString());
 					list.put("IdCardLocation", tv_address.getText().toString());
 					list.put("IdCardNo", tv_number.getText().toString());
 					list.put("date",tv_date.getText().toString());
@@ -405,10 +405,22 @@ public class IDCardCode extends Activity implements OnClickListener{
 					extras.putSerializable("LoginedIpInfoS",(Serializable) list);///java.util.HashMap.  
 					intent.putExtras(extras);
 					startActivity(intent);
-					finish();
 				}if(list.isEmpty()){
+					list.put("Name",tv_name.getText().toString());
+					list.put("Sex",  tv_sex.getText().toString());
+					list.put("Nation","213");
+					list.put("Birthday", tv_birth.getText().toString());
+					list.put("IdCardLocation", tv_address.getText().toString());
+					list.put("IdCardNo", tv_number.getText().toString());
+					list.put("date",tv_date.getText().toString());
+					list.put("IdCardAuthority",tv_office.getText().toString());
 					Intent intent =  new Intent(getApplicationContext(),RegistRentPerson.class);
+					Bundle extras=new Bundle();  
+					extras.putSerializable("LoginedIpInfoS",(Serializable) list);///java.util.HashMap.  
+					intent.putExtras(extras);
 					startActivity(intent);
+					/*Intent intent =  new Intent(getApplicationContext(),RegistRentPerson.class);
+					startActivity(intent);*/
 				}
 				break;
 			case R.id.iv_pic:

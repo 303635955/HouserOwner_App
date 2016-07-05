@@ -55,7 +55,7 @@ public class RentOwnerOtherActivity extends Activity {
 		// 初始化控件
 		Focus_attention = (Spinner) findViewById(R.id.Spinner_Focus_attention);
 		// 建立数据源
-		String[] mItems2 = getResources().getStringArray(R.array.spinnerchild);
+		String[] mItems2 = getResources().getStringArray(R.array.spinnerbecareful);
 		// 建立Adapter并且绑定数据源
 		ArrayAdapter<String> Focus_attention_Adapter = new ArrayAdapter<String>(
 				this, android.R.layout.simple_spinner_item, mItems2);
@@ -238,16 +238,15 @@ public class RentOwnerOtherActivity extends Activity {
 	public Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
-			
 			if(progressDialog != null){
 				progressDialog.dismiss();
 			}
 			switch (msg.what) {
 				case 0:
-					Toast.makeText(getApplicationContext(), "提交失败，请检查网络", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), massage, Toast.LENGTH_SHORT).show();
 				break;
 				case 1:
-					Toast.makeText(getApplicationContext(), massage, Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(),massage, Toast.LENGTH_SHORT).show();
 					Intent intent = new Intent(RentOwnerOtherActivity.this,MainActivity.class);
 					startActivity(intent);
 					break;
@@ -263,16 +262,17 @@ public class RentOwnerOtherActivity extends Activity {
 			postmap.putAll(SetUpRent.getSetUpRent().getRentmap());
 			postmap.putAll(SetUpRent.getSetUpRent().getHousemap());
 			postmap.putAll(SetUpRent.getSetUpRent().getAttionmap());
-			postmap.put("HouseId", "362");
+			postmap.put("HouseId",SetUpRent.getSetUpRent().getHouseId());
 			JSONObject js= new JSONObject(postmap);
-			String ret = httpsigin.PostStringToUrl("http://120.25.65.125:8118/HouseMobileApp/AddPerson2",js.toString());
+			String postdate = js.toString();
+			//String ret = httpsigin.PostStringToUrl("http://120.25.65.125:8118/HouseMobileApp/AddPerson2",js.toString());
+			String ret = httpsigin.PostStringToUrl("http://192.168.1.147:8118/HouseMobileApp/AddPerson2",js.toString());
 			JSONObject jsonObject2 = null;
 			try {
 				jsonObject2 = new JSONObject(ret);
 				String s=jsonObject2.get("ret")+"";
+				massage = jsonObject2.get("msg") +"";
 				if(s.equals("1")){
-					massage = jsonObject2.get("msg") +"";
-					
 					handler.sendEmptyMessage(1);
 				}else {
 					handler.sendEmptyMessage(0);
@@ -281,10 +281,8 @@ public class RentOwnerOtherActivity extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		};
 	};
-	
 	//	设置传入map的值
 	public void attion(String attion) {
 		if (attion.equals("不关注")) {
