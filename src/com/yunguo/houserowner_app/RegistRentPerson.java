@@ -14,6 +14,7 @@ import com.throrinstudio.android.common.libs.validator.validator.NotEmptyValidat
 import com.throrinstudio.android.common.libs.validator.validator.RegExpValidator;
 import com.yunguo.Bean.SetUpRent;
 
+import android.R.bool;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -47,6 +48,7 @@ public class RegistRentPerson extends Activity {
 	String[] mItems, mItems1;
 
 	private Form form; // 输入校验
+
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -105,59 +107,79 @@ public class RegistRentPerson extends Activity {
 	public void setclick() {
 		carddate.setOnFocusChangeListener(new OnFocusChangeListener() {
 			Calendar c = Calendar.getInstance();
+
 			@Override
 			public void onFocusChange(View view, boolean hasFocus) {
 				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), "此处被点击",Toast.LENGTH_SHORT).show();
-				if(hasFocus){
-					new DoubleDatePickerDialog(RegistRentPerson.this, 0, new DoubleDatePickerDialog.OnDateSetListener() {
-						@Override
-						// 最后一个false表示不显示日期，如果要显示日期，最后参数可以是true或者不用输入
-						public void onDateSet(DatePicker startDatePicker, int startYear, int startMonthOfYear,
-								int startDayOfMonth, DatePicker endDatePicker, int endYear, int endMonthOfYear,
-								int endDayOfMonth) {
-							String textstartString = String.format("%d-%d-%d", startYear,
-									startMonthOfYear + 1, startDayOfMonth);
-							carddate.setText(textstartString);
-							String textendString = String.format("%d-%d-%d", endYear,
-									endMonthOfYear + 1, endDayOfMonth);
-							date.setText(textendString);
-						}
-					}, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DATE), false).show();
+				Toast.makeText(getApplicationContext(), "此处被点击",
+						Toast.LENGTH_SHORT).show();
+				if (hasFocus) {
+					new DoubleDatePickerDialog(RegistRentPerson.this, 0,
+							new DoubleDatePickerDialog.OnDateSetListener() {
+								@Override
+								// 最后一个false表示不显示日期，如果要显示日期，最后参数可以是true或者不用输入
+								public void onDateSet(
+										DatePicker startDatePicker,
+										int startYear, int startMonthOfYear,
+										int startDayOfMonth,
+										DatePicker endDatePicker, int endYear,
+										int endMonthOfYear, int endDayOfMonth) {
+									String textstartString = String.format(
+											"%d-%d-%d", startYear,
+											startMonthOfYear + 1,
+											startDayOfMonth);
+									carddate.setText(textstartString);
+									String textendString = String.format(
+											"%d-%d-%d", endYear,
+											endMonthOfYear + 1, endDayOfMonth);
+									date.setText(textendString);
+								}
+							}, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c
+									.get(Calendar.DATE), false).show();
 				}
 			}
 		});
-		
+
 		date.setOnFocusChangeListener(new OnFocusChangeListener() {
 			Calendar c = Calendar.getInstance();
+
 			@Override
 			public void onFocusChange(View view, boolean hasFocus) {
 				// TODO Auto-generated method stub
-				Toast.makeText(getApplicationContext(), "此处被点击",Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "此处被点击",
+						Toast.LENGTH_SHORT).show();
 				// 最后一个false表示不显示日期，如果要显示日期，最后参数可以是true或者不用输入
-				if(hasFocus){
-					new DoubleDatePickerDialog(RegistRentPerson.this, 0, new DoubleDatePickerDialog.OnDateSetListener() {
-						@Override
-						// 最后一个false表示不显示日期，如果要显示日期，最后参数可以是true或者不用输入
-						public void onDateSet(DatePicker startDatePicker, int startYear, int startMonthOfYear,
-								int startDayOfMonth, DatePicker endDatePicker, int endYear, int endMonthOfYear,
-								int endDayOfMonth) {
-							String textstartString = String.format("%d-%d-%d", startYear,
-									startMonthOfYear + 1, startDayOfMonth);
-							carddate.setText(textstartString);
-							String textendString = String.format("%d-%d-%d", endYear,
-									endMonthOfYear + 1, endDayOfMonth);
-							date.setText(textendString);
-						}
-					}, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DATE), false).show();
+				if (hasFocus) {
+					new DoubleDatePickerDialog(RegistRentPerson.this, 0,
+							new DoubleDatePickerDialog.OnDateSetListener() {
+								@Override
+								// 最后一个false表示不显示日期，如果要显示日期，最后参数可以是true或者不用输入
+								public void onDateSet(
+										DatePicker startDatePicker,
+										int startYear, int startMonthOfYear,
+										int startDayOfMonth,
+										DatePicker endDatePicker, int endYear,
+										int endMonthOfYear, int endDayOfMonth) {
+									String textstartString = String.format(
+											"%d-%d-%d", startYear,
+											startMonthOfYear + 1,
+											startDayOfMonth);
+									carddate.setText(textstartString);
+									String textendString = String.format(
+											"%d-%d-%d", endYear,
+											endMonthOfYear + 1, endDayOfMonth);
+									date.setText(textendString);
+								}
+							}, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c
+									.get(Calendar.DATE), false).show();
 				}
 			}
 		});
-		/*carddate.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-			}
-		});*/
+		/*
+		 * carddate.setOnClickListener(new OnClickListener() {
+		 * 
+		 * @Override public void onClick(View v) { } });
+		 */
 		Sex.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> adapterView, View view,
@@ -193,28 +215,36 @@ public class RegistRentPerson extends Activity {
 		btn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				s = new HashMap<String, String>();
-				String str = person_name.getText().toString();
-				s.put("Name", person_name.getText().toString());
-				s.put("IdCardNo", person_cardid.getText().toString());
-				s.put("IdCardAuthority", office.getText().toString());
-				s.put("Gender", Sextext);
-				s.put("Nation", nation);
-				// carddate, RentAdress, date, office
-				s.put("IdCardLocation", RentAdress.getText().toString());
-				s.put("IdCardBeginTime", carddate.getText().toString());
-				s.put("IdCardEndTime", date.getText().toString());
-				if(person_cardid.getText().toString().isEmpty()){
-					String no =person_cardid.getText().toString();
-					String birth = no.substring(6,10)+"-"+no.substring(10,12)+"-"+no.substring(12,14);
-					s.put("Birthday", birth);
+				InputCheckout();
+				if (form.validate()) {
+					s = new HashMap<String, String>();
+					String str = person_name.getText().toString();
+					s.put("Name", person_name.getText().toString());
+					s.put("IdCardNo", person_cardid.getText().toString());
+					s.put("IdCardAuthority", office.getText().toString());
+					s.put("Gender", Sextext);
+					s.put("Nation", nation);
+					// carddate, RentAdress, date, office
+					s.put("IdCardLocation", RentAdress.getText().toString());
+					s.put("IdCardBeginTime", carddate.getText().toString());
+					s.put("IdCardEndTime", date.getText().toString());
+					if (!(person_cardid.getText().toString().isEmpty())) {
+						String no = person_cardid.getText().toString();
+						String birth = no.substring(6, 10) + "-"
+								+ no.substring(10, 12) + "-"
+								+ no.substring(12, 14);
+						s.put("Birthday", birth);
+					}
+					setsex(Sextext);
+					setnation(nation);
+					SetUpRent.getSetUpRent().setRentmap(s);
+					Intent intent = new Intent(getApplicationContext(),
+							RentOwnerActivity.class);
+					startActivity(intent);
+				} else {
+					Toast.makeText(getApplicationContext(), "输入有误",
+							Toast.LENGTH_SHORT).show();
 				}
-				setsex(Sextext);
-				setnation(nation);
-				SetUpRent.getSetUpRent().setRentmap(s);
-				Intent intent = new Intent(getApplicationContext(),
-						RentOwnerActivity.class);
-				startActivity(intent);
 			}
 		});
 
@@ -244,6 +274,7 @@ public class RegistRentPerson extends Activity {
 		form.addValidates(telValidate2);
 	}
 
+
 	public void setText() {
 		if (s != null) {
 			if ((!s.get("date").equals("")) || s.get("date") != null) {
@@ -256,14 +287,16 @@ public class RegistRentPerson extends Activity {
 			office.setText(s.get("IdCardAuthority"));
 			RentAdress.setText(s.get("IdCardLocation"));
 			// 设置默认选中
-			if (s.get("Sex") != null && !s.get("Sex").equals("") && !(s.get("Sex").isEmpty())) {
+			if (s.get("Sex") != null && !s.get("Sex").equals("")
+					&& !(s.get("Sex").isEmpty())) {
 				if (getselect(s.get("Sex"), mItems) != 200) {
 					Sex.setSelection(getselect(s.get("Sex"), mItems), true);
 				} else {
 
 				}
 			}
-			if (s.get("Nation") != null  &&  !s.get("Nation").equals("")  &&  !(s.get("Nation").isEmpty()) ) {
+			if (s.get("Nation") != null && !s.get("Nation").equals("")
+					&& !(s.get("Nation").isEmpty())) {
 				if (getselect(s.get("Nation"), mItems1) != 200) {
 					Nationnal.setSelection(getselect(s.get("Nation"), mItems1),
 							true);
@@ -288,8 +321,8 @@ public class RegistRentPerson extends Activity {
 				break;
 			}
 		}
-		if(str != data[58]){
-			i=0;
+		if (str != data[58]) {
+			i = 0;
 		}
 		return i;
 	}
@@ -309,7 +342,7 @@ public class RegistRentPerson extends Activity {
 				s.put("Gender", "1");
 			} else if (sex.equals("女")) {
 				s.put("Gender", "2");
-			}else {
+			} else {
 				s.put("Gender", "1");
 			}
 		}
@@ -343,7 +376,7 @@ public class RegistRentPerson extends Activity {
 			s.put("Nation", "0");
 		} else {
 			int i;
-			for ( i = 0; i < str.length; i++) {
+			for (i = 0; i < str.length; i++) {
 				if (str[i].equals(nation)) {
 					if (i == 57) {
 						s.put("Nation", "59");
@@ -360,7 +393,7 @@ public class RegistRentPerson extends Activity {
 					s.put("Nation", "" + (++i));
 				}
 			}
-			if(i != str.length){
+			if (i != str.length) {
 				s.put("Nation", "0");
 			}
 		}

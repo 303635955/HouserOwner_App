@@ -273,7 +273,7 @@
 			            android:layout_weight="1"
 			            android:layout_margin="15dp"
 			            android:background="#66CCCC"
-			            android:text="房屋退租"/>
+			            android:text="卡号注销"/>
 			        
 			    </LinearLayout>
 			    <LinearLayout 

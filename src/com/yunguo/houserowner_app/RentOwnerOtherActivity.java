@@ -265,8 +265,8 @@ public class RentOwnerOtherActivity extends Activity {
 			postmap.put("HouseId",SetUpRent.getSetUpRent().getHouseId());
 			JSONObject js= new JSONObject(postmap);
 			String postdate = js.toString();
-			//String ret = httpsigin.PostStringToUrl("http://120.25.65.125:8118/HouseMobileApp/AddPerson2",js.toString());
-			String ret = httpsigin.PostStringToUrl("http://192.168.1.147:8118/HouseMobileApp/AddPerson2",js.toString());
+			//String ret = httpsigin.PostStringToUrl("http://120.25.65.125:8118/HouseMobileApp/addPerson2",js.toString());
+			String ret = httpsigin.PostStringToUrl("http://192.168.1.147:8118/HouseMobileApp/addPerson2",js.toString());
 			JSONObject jsonObject2 = null;
 			try {
 				jsonObject2 = new JSONObject(ret);
@@ -280,6 +280,7 @@ public class RentOwnerOtherActivity extends Activity {
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				handler.sendEmptyMessage(0);
 			}
 		};
 	};

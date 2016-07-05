@@ -44,7 +44,12 @@
         <activity android:name="com.yunguo.houserowner_app.OpenDoorActivity"></activity>
         <activity android:name="com.yunguo.houserowner_app.CardMessageActivity"></activity>
         <activity android:name="com.yunguo.houserowner_app.AddPermissionActivity"></activity>
-        
+        <activity android:name="com.yunguo.fragment.CancellationActivity"></activity>
+        <activity 
+            android:name="com.yunguo.fragment.RenewalActivity"
+            android:theme="@android:style/Theme.Dialog"
+            >
+        </activity>
         <activity 
             android:name="com.yunguo.houserowner_app.FirstActivity"
             android:theme="@android:style/Theme.NoTitleBar">
@@ -61,7 +66,8 @@
             android:name="com.yunguo.houserowner_app.MainActivity"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
-        <activity android:name="com.yunguo.houserowner_app.IDCardCode" >
+        <activity android:name="com.yunguo.houserowner_app.IDCardCode"
+            android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
             android:name="com.yunguo.houserowner_app.HouseInfoActivity"

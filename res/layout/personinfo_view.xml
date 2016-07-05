@@ -209,7 +209,14 @@
                         android:background="@drawable/qq_edit_login" />
 
                 </LinearLayout>
-                
+                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_marginRight="30dip"
+                    android:text="必填信息"
+                    android:textColor="#5CA7BA"
+                    android:textSize="10sp" />
          		<LinearLayout
 	                android:layout_width="match_parent"
 	                android:layout_height="0dp"
@@ -239,14 +246,7 @@
                         android:background="@drawable/qq_edit_login" />
 
                 </LinearLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:layout_marginRight="30dip"
-                    android:text="必填信息"
-                    android:textColor="#5CA7BA"
-                    android:textSize="10sp" />
+               
        	 </LinearLayout>
         
       </LinearLayout>

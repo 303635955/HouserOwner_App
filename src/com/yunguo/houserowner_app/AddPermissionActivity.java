@@ -62,7 +62,7 @@ public class AddPermissionActivity extends Activity{
 		setAdapter();
 		setOnClick();
 		animaition.start();
-		new Thread(thread).start();
+		new Thread(thread).start();    
 	}
 	
 	public void findView(){

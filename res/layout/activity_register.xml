@@ -25,7 +25,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="手机|身份证号"
-                android:maxLength="15"
                 android:textSize="20sp" />
         </RelativeLayout>
 
@@ -40,7 +39,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="密码"
-                android:maxLength="15"
                 android:password="true"
                 android:textSize="20sp" />
 
