@@ -36,6 +36,7 @@ import com.yunguo.houserowner_app.R;
 public class  RenewalActivity extends Activity{
 	private EditText Renewal_date;
 	private Spinner Renewal_name;
+	private String name;
 	private Button sure_btn,cancle_btn;
 	private String UserId = "";
 	private String map;

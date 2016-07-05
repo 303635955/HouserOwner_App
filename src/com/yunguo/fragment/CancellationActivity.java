@@ -41,7 +41,7 @@ import android.widget.AdapterView.OnItemClickListener;
 public class CancellationActivity extends Activity{
 	
 	private String UserId = "";
-	
+	private String cardid = "";
 	private String masg = ""; // 提示消息
 	private Boolean fla = true; //记录上拉下拉
 	private PullToRefreshListView listView;
@@ -108,7 +108,8 @@ public class CancellationActivity extends Activity{
 					int position, long id) {
 				Map<String,String> map = (Map<String, String>) adapter.getItem(position-1);
 				Toast.makeText(getApplicationContext(),map+"", Toast.LENGTH_SHORT).show();
-				new AlertDialog.Builder(CancellationActivity.this).setTitle("注销卡号").setMessage("确认删除？")
+				cardid = map.get("CardNo").toString();
+				new AlertDialog.Builder(CancellationActivity.this).setTitle("注销卡号").setMessage("确认注销？")
 				.setNegativeButton("取消", new  DialogInterface.OnClickListener(){
 					public void onClick(DialogInterface dialog, int which) {
 					}
@@ -116,6 +117,7 @@ public class CancellationActivity extends Activity{
 				.setPositiveButton("确定", new  DialogInterface.OnClickListener(){
 					public void onClick(DialogInterface dialog, int which) {
 						Toast.makeText(CancellationActivity.this, "注销成功", Toast.LENGTH_SHORT).show();
+						new Thread(thread2).start();
 					}
 				}).show();
 			}
@@ -235,10 +237,11 @@ public class CancellationActivity extends Activity{
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case 0:
-				
+				Toast.makeText(getApplicationContext(),"注销失败", Toast.LENGTH_SHORT).show();
 				break;
 			case 1:
-				
+				Toast.makeText(getApplicationContext(),"注销成功", Toast.LENGTH_SHORT).show();
+				new Thread(thread).start();
 				break;
 			}
 		};
@@ -247,7 +250,39 @@ public class CancellationActivity extends Activity{
 	private Thread thread2  = new Thread(){
 		@Override
 		public void run() {
-			
+			String url = "http://120.25.65.125:8118/HouseMobileApp/IcCardXiaoka";
+			Map<String, String> houseid = new HashMap<String, String>();
+			houseid.put("CardId",cardid);
+			JSONObject js = new JSONObject(houseid);
+			String str = js.toString();
+			String res = HTTPUtil.PostStringToUrl(url, str);
+			if(res.equals("") || res == null){
+				handler.sendEmptyMessage(2);
+				return;
+			}
+			JSONObject jsonObject2 = null;
+			try {
+				jsonObject2 = new JSONObject(res);
+				String ret = jsonObject2.get("ret")+"";
+				if(ret.equals("1")){
+					Message mes = new Message();
+					mes.what = 0;
+					List<Map<String, String>> tmpdata = getHouseInfo(res);
+					if(tmpdata == null || tmpdata.equals("")){
+						handler2.sendEmptyMessage(1);
+						return;
+					}else{
+						mes.obj = tmpdata;
+					}
+					handler2.sendMessage(mes);
+				}else{
+					handler2.sendEmptyMessage(1);
+					return;
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+				handler2.sendEmptyMessage(2);
+			}
 		}
 	};
 }
