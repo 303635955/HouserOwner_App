@@ -1,0 +1,317 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:background="#FAFAFA">
+   <LinearLayout
+        android:id="@+id/houseinfo_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#339999"
+        android:gravity="center"
+        android:weightSum="5"
+        android:orientation="horizontal" >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="第一步:拍照"
+            android:textColor="#FFFFFF"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="第二步:身份证信息"
+            android:textColor="#FFFFFF"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="第三步:房屋信息"
+            android:textColor="#FFFFFF"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:background="#5CA7BA"
+            android:text="第四步:其他信息"
+            android:textColor="#FFFFFF"/>
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_below="@id/houseinfo_top"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical"
+        android:weightSum="9">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="8"
+            android:layout_marginRight="8dip"
+            android:background="#FAFAFA"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_weight="1"
+                        android:text="重点关注："
+                        android:textColor="#000000"/>
+                    <Spinner
+                        android:id="@+id/Spinner_Focus_attention"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dip"
+                        android:layout_marginBottom="4dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login"/>
+                </LinearLayout>
+                
+       		<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:layout_weight="1"
+                        android:text="未刷卡警告间隔："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/warning"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dip"
+                        android:layout_marginBottom="4dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+	                    android:text="0"
+	                    android:textColor="#000000"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+                
+         		
+       			<LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="生育动态："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                    <Spinner
+	                    android:id="@+id/Spinner_birth"
+	                    android:layout_width="0dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_marginTop="4dip"
+                        android:layout_marginBottom="4dip"
+	                    android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+	                    android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+                
+         		
+         		<LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="避孕动态："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <Spinner
+	                    android:id="@+id/Spinner_contraception"
+	                    android:layout_width="0dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_marginTop="4dip"
+                        android:layout_marginBottom="4dip"
+	                    android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+	                    android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+         		<LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:gravity="center"
+	                android:layout_marginTop="3dp"
+	                android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="计生证类型："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <Spinner
+                        android:id="@+id/Spinner_plan"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dip"
+                        android:layout_marginBottom="4dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+                <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="计生证号："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                    <EditText
+                        android:id="@+id/Spinner_plan_number"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dip"
+                        android:layout_marginBottom="4dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+	                    android:text="0"
+	                    android:textColor="#000000"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+                <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="0-1周岁子女："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <Spinner
+                        android:id="@+id/Spinner_children"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dip"
+                        android:layout_marginBottom="4dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login" />
+
+                </LinearLayout>
+                <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="0dp"
+	                android:layout_weight="1"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="残疾类型："
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                    <Spinner
+                        android:id="@+id/Spinner_disability"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dip"
+                        android:layout_marginBottom="4dip"
+                        android:layout_marginRight="30dip"
+	                    android:layout_marginLeft="20dip"
+                        android:layout_weight="3"
+                        android:background="@drawable/qq_edit_login" />
+                </LinearLayout>
+       	 </LinearLayout>
+      </LinearLayout>
+        
+     
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/house_info_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dip"
+            android:layout_weight="1"
+            android:background="#5CA7BA"
+            android:text="上一步"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/regist_info_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dip"
+            android:layout_weight="1"
+            android:background="#5CA7BA"
+            android:text="提 交"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</RelativeLayout>
