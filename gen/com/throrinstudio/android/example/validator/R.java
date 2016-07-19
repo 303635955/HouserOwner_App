@@ -12,15 +12,15 @@ public final class R {
 		public static final int okLabel = 0x7f010000;
 	}
 	public static final class drawable {
-		public static final int ic_explain_about = 0x7f02001d;
-		public static final int ic_launcher = 0x7f02001e;
+		public static final int ic_explain_about = 0x7f02001f;
+		public static final int ic_launcher = 0x7f020020;
 	}
 	public static final class id {
-		public static final int widget_okcancelbar_cancel = 0x7f0800a3;
-		public static final int widget_okcancelbar_ok = 0x7f0800a4;
+		public static final int widget_okcancelbar_cancel = 0x7f0800a4;
+		public static final int widget_okcancelbar_ok = 0x7f0800a5;
 	}
 	public static final class layout {
-		public static final int main = 0x7f030017;
+		public static final int main = 0x7f030016;
 		public static final int widget_ok_cancel_bar = 0x7f03002a;
 	}
 	public static final class string {

@@ -35,6 +35,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
@@ -47,10 +48,11 @@ public class LoginActivity extends Activity {
 	private SharedPreferences sharedPreferences;
 	private ProgressDialog progressDialog;
 	private Form form;
-	String str = "";
+	private String str = "";
 	private String id = "";
 	private MyDialogUtils mydialog;
 	private boolean flas = true;
+	private TextView login_foundpaw;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,6 +82,7 @@ public class LoginActivity extends Activity {
 		mEditViewUser = (EditText) findViewById(R.id.register_user);
 		mEditViewPassword = (EditText) findViewById(R.id.register_password);
 		mCheckBox = (CheckBox) findViewById(R.id.login_box);
+		login_foundpaw = (TextView) findViewById(R.id.login_foundpaw);
 		
 		mydialog = new MyDialogUtils(this);
 		mydialog.setCancelable(false); 
@@ -103,6 +106,15 @@ public class LoginActivity extends Activity {
 				}else{
 					Toast.makeText(getApplicationContext(), " ‰»Î”–ŒÛ", Toast.LENGTH_SHORT).show();
 				}
+			}
+		});
+		
+		
+		login_foundpaw.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(LoginActivity.this,UpUserPasswordActivity.class);
+				startActivity(intent);
 			}
 		});
 	}	

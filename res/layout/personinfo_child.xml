@@ -11,11 +11,11 @@
         android:background="#FFFFFF"
         android:gravity="center_vertical"
         android:orientation="horizontal">
-         <ImageView
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_margin="5dip"
-	        android:src="@drawable/release_mode_landlord"/>
+         <com.yunguo.ImageLoderUtils.CircalurImage
+	        android:id="@+id/imgloder"  
+	        android:layout_width="74.0dip"  
+	        android:layout_height="74.0dip"
+	        android:layout_margin="5dip"/>
          <LinearLayout 
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"

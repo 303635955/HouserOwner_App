@@ -14,6 +14,7 @@ import com.throrinstudio.android.common.libs.validator.validator.PhoneValidator;
 import com.throrinstudio.android.common.libs.validator.validator.RegExpValidator;
 import com.yunguo.Bean.PitureBean;
 import com.yunguo.Bean.SetUpRent;
+import com.yunguo.ImageLoderUtils.CircalurImage;
 import com.yunguo.Util.DoubleDatePickerDialog;
 import com.yunguo.Util.FromUtil;
 import com.yunguo.Util.HTTPUtil;
@@ -59,7 +60,7 @@ public class RentOwnerActivity extends Activity {
 	private EditText person_call;
 	private Button btn,btn_back;
 	private Button getdoorid;
-	private ImageView picImg;
+	private CircalurImage picImg;
 	private SelectPicPopupWindow menuWindow; // 自定义的头像编辑弹出框
 	
 	private String picPath = "";
@@ -97,7 +98,7 @@ public class RentOwnerActivity extends Activity {
 		btn_back = (Button) findViewById(R.id.house_info_one);
 		btn = (Button) findViewById(R.id.house_info_two);
 		getdoorid = (Button) findViewById(R.id.getdoorid);
-		picImg = (ImageView) findViewById(R.id.picImg);
+		picImg = (CircalurImage) findViewById(R.id.picImg);
 	}
 
 	/**

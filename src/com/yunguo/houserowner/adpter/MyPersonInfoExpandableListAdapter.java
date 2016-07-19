@@ -8,8 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
+import com.yunguo.ImageLoderUtils.CircalurImage;
 import com.yunguo.houserowner_app.R;
 
 public class MyPersonInfoExpandableListAdapter extends BaseExpandableListAdapter{
@@ -17,11 +22,21 @@ public class MyPersonInfoExpandableListAdapter extends BaseExpandableListAdapter
 	private List<String> groups;
 	private List<List<Map<String,String>>> child;
 	private Context context;
+	private  DisplayImageOptions options;
 	
 	public MyPersonInfoExpandableListAdapter(List<String> groups,List<List<Map<String,String>>> child,Context context){
 		this.groups = groups;
 		this.child = child;
 		this.context = context;
+		 options = new DisplayImageOptions.Builder()
+			.showStubImage(R.drawable.ic_stub)
+			.showImageForEmptyUri(R.drawable.ic_empty)
+			.showImageOnFail(R.drawable.ic_error)
+			.cacheInMemory()
+			.cacheOnDisc()
+			.displayer(new RoundedBitmapDisplayer(1))
+			.build();
+		
 	}
 
 	@Override
@@ -92,13 +107,18 @@ public class MyPersonInfoExpandableListAdapter extends BaseExpandableListAdapter
 		    itemHolder.UserName = (TextView) convertView.findViewById(R.id.UserName);
 		    itemHolder.starttime = (TextView) convertView.findViewById(R.id.starttime);
 		    itemHolder.endtime = (TextView) convertView.findViewById(R.id.endtime);
+		    itemHolder.imgloder = (CircalurImage) convertView.findViewById(R.id.imgloder);
 		    convertView.setTag(itemHolder);
 		   } else {
 		    itemHolder = (ItemHolder) convertView.getTag();
 		   }
 		   itemHolder.UserName.setText(child.get(groupPosition).get(childPosition).get("UserName")+"");
 		   itemHolder.starttime.setText(child.get(groupPosition).get(childPosition).get("CheckInTime")+"");
-		   itemHolder.endtime.setText(child.get(groupPosition).get(childPosition).get("CheckOutTime")+"");
+		   itemHolder.endtime.setText(child.get(groupPosition).get(childPosition).get("CheckOutTime")+"");  
+		   
+		   
+		   ImageLoader.getInstance().displayImage("http://120.25.65.125:8118/PersonImage/"+child.get(groupPosition).get(childPosition).get("IdCardNo")+"/"+child.get(groupPosition).get(childPosition).get("IdCardNo")+".jpg", itemHolder.imgloder, options);  
+		
 		   return convertView;
 	}
 
@@ -113,5 +133,6 @@ public class MyPersonInfoExpandableListAdapter extends BaseExpandableListAdapter
 
 	class ItemHolder {
 		  public TextView UserName,starttime,endtime;
+		  public CircalurImage imgloder;
 	 }
 }

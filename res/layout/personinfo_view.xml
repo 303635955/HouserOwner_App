@@ -46,13 +46,13 @@
         android:id="@+id/linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="3dip"
         android:layout_below="@id/houseinfo_top"
         android:orientation="vertical">
-        <ImageView
-            android:id="@+id/picImg" 
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+        <com.yunguo.ImageLoderUtils.CircalurImage
+	        android:id="@+id/picImg" 
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_add_pic"/>
@@ -105,7 +105,6 @@
                         android:layout_weight="1"
                         android:text="房间名："
                         android:textColor="#000000"/>
-
                     <EditText
                         android:id="@+id/person_housename_text"
                         android:layout_width="0dp"
@@ -116,7 +115,6 @@
 	                    android:layout_marginLeft="20dip"
                         android:layout_weight="3"
                         android:background="@drawable/qq_edit_login"/>
-
                 </LinearLayout>
                 
          		<TextView
