@@ -42,11 +42,9 @@ public class LoginActivity extends Activity {
 	private EditText mEditViewUser, mEditViewPassword;
 	private Button mRegisterBut, mLoginBut;
 	private CheckBox mCheckBox;
-	private SQLiteDatabase db;
 	private HTTPUtil httppost; 
 	private String username,userpsw;
 	private SharedPreferences sharedPreferences;
-	private ProgressDialog progressDialog;
 	private Form form;
 	private String str = "";
 	private String id = "";
@@ -175,7 +173,7 @@ public class LoginActivity extends Activity {
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
-			String url="http://120.25.65.125:8118/HouseMobileApp/HouseOwnerLogin";
+			String url="http://192.168.1.151:8118/HouseMobileApp/HouseOwnerLogin";
 			@SuppressWarnings("static-access")
 			String res = httppost.PostStringToUrl(url, str);
 			try {

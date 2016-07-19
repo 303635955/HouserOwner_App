@@ -41,6 +41,8 @@ public class OwnerMessageActivity extends Activity {
 	private LinearLayout loadlinear;
 	private TextView showtext;
 	
+	private Button upTelbut;
+	
 	private TextView Id,Name,Age,Gender,TelNo,IdCardNo;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,8 @@ public class OwnerMessageActivity extends Activity {
 		Gender = (TextView) findViewById(R.id.Gender);
 		TelNo = (TextView) findViewById(R.id.TelNo);
 		IdCardNo = (TextView) findViewById(R.id.IdCardNo);
+		
+		upTelbut = (Button) findViewById(R.id.upTelbut);
 	}
 	
 	public void initListView() {
@@ -97,11 +101,19 @@ public class OwnerMessageActivity extends Activity {
 			}
 		});
 		
+		/**
+		 * ¸ü»»ÊÖ»ú
+		 */
+		upTelbut.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		
 		backimg.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				/*Intent intent = new Intent(OwnerMessageActivity.this,MainActivity.class);
-				startActivity(intent);*/
 				finish();
 			}
 		});

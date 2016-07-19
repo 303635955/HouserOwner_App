@@ -1,17 +1,22 @@
 package com.yunguo.houserowner_app;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import com.throrinstudio.android.common.libs.validator.Form;
 import com.throrinstudio.android.common.libs.validator.Validate;
 import com.throrinstudio.android.common.libs.validator.validator.NotEmptyValidator;
-import com.yunguo.Bean.SetUpRent;
 import com.yunguo.ImageLoderUtils.BPUtil;
 import com.yunguo.Util.HTTPUtil;
+import com.yunguo.Util.MyDialogUtils;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,6 +36,9 @@ public class UpUserPasswordActivity extends Activity{
 	private BPUtil bPUtil;
 	private EditText register_user;
 	private Form form;
+	private String IdCardNo;
+	
+	private MyDialogUtils mydialog;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +59,10 @@ public class UpUserPasswordActivity extends Activity{
 		nexdbut = (Button) findViewById(R.id.nexdbut);
 		textcode = (EditText) findViewById(R.id.textcode);
 		register_user = (EditText) findViewById(R.id.register_user);
+		
+		mydialog = new MyDialogUtils(this);
+		mydialog.setCancelable(false); 
+		mydialog.setTitle("请求中……");
 	}
 	
 
@@ -90,8 +102,12 @@ public class UpUserPasswordActivity extends Activity{
 				
 				if(InputCheckout()){
 					if(bPUtil.getCode().equalsIgnoreCase(textcode.getText()+"")){
+						IdCardNo = register_user.getText()+"";
+						mydialog.show();
 						new Thread(thread).start();
 					}else{
+						//刷新验证码
+						authcode.setImageBitmap(bPUtil.createBitmap());
 						Toast.makeText(UpUserPasswordActivity.this, "验证码错误", Toast.LENGTH_SHORT).show();
 					}
 				}
@@ -110,15 +126,27 @@ public class UpUserPasswordActivity extends Activity{
 		@SuppressLint("HandlerLeak")
 		@Override
 		public void handleMessage(Message msg) {
+			
+			if(mydialog != null){
+				mydialog.dismiss();
+			}
 			switch (msg.what) {
 			case 0:
-				Toast.makeText(UpUserPasswordActivity.this, "成功咯", Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(UpUserPasswordActivity.this,MSNActivity.class);
+				@SuppressWarnings("unchecked")
+				Map<String,String> map = (Map<String,String>) msg.obj;
+				Bundle bundle = new Bundle();
+				bundle.putSerializable("userdate", (Serializable)map);
+				intent.putExtra("bundle", bundle);
+				startActivity(intent);
+				finish();
 				break;
 			case 1:
-				Toast.makeText(UpUserPasswordActivity.this, "没有此账号", Toast.LENGTH_SHORT).show();
+				Toast.makeText(UpUserPasswordActivity.this, msg.obj+"", Toast.LENGTH_SHORT).show();
 				break;
 			case 2:
 				Toast.makeText(UpUserPasswordActivity.this, "网络连接失败！", Toast.LENGTH_SHORT).show();
+				finish();
 				break;
 			}
 		};
@@ -128,12 +156,20 @@ public class UpUserPasswordActivity extends Activity{
 	private Thread thread = new Thread(){
 		@Override
 		public void run() {
-			String url = "http://192.168.1.164:8118/HouseMobileApp/CheckedIsUser";
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			String url = "http://192.168.1.151:8118/HouseMobileApp/FindPw";
 			Map<String, String> houseid = new HashMap<String, String>();
-			houseid.put("IcCardNo",register_user.getText()+"");
+			houseid.put("IdCardNo",IdCardNo);
 			JSONObject js = new JSONObject(houseid);
 			String str = js.toString();
 			String res = HTTPUtil.PostStringToUrl(url, str);
+			
+			Message mesg = new Message();
 			if(res.equals("") || res == null){
 				handler.sendEmptyMessage(2);
 				return;
@@ -143,14 +179,22 @@ public class UpUserPasswordActivity extends Activity{
 				jsonObject2 = new JSONObject(res);
 				String ret = jsonObject2.get("ret")+"";
 				if(ret.equals("1")){
-					handler.sendEmptyMessage(0);
+					Map<String,String> map = new HashMap<String,String>();
+					map.put("IdCardNo",IdCardNo);
+					map.put("Ownerid",jsonObject2.getString("ownerid"));
+					map.put("OldPw",jsonObject2.getString("msg"));
+					mesg.obj = map;
+					mesg.what = 0;
 				}else{
-					handler.sendEmptyMessage(1);
+					mesg.obj = jsonObject2.get("msg");
+					mesg.what = 1;
+					
 				}
 			} catch (JSONException e) {
 				e.printStackTrace();
 				handler.sendEmptyMessage(2);
 			}
+			handler.handleMessage(mesg);
 		};
 	};
 	

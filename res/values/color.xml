@@ -4,4 +4,6 @@
     <color name="registerbutse">#ededed</color>
     <color name="anxia">#339999</color>
     <color name="morebut">#ffffff</color>
+    <color name="butcolor">#339999</color>
+    <color name="butcolor2">#A4A4A4</color>
 </resources>

@@ -1,6 +1,7 @@
 package com.yunguo.Util;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +17,12 @@ import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
+
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.URI;
+import org.apache.commons.httpclient.methods.GetMethod;
 
 import android.util.Log;
 
@@ -267,6 +274,39 @@ public class HTTPUtil {
         return result;  
     }
 	
-	
+	public static String batchSend(String url, String account, String pswd, String mobile, String msg,
+			boolean needstatus, String extno) throws Exception {
+		HttpClient client = new HttpClient();
+		GetMethod method = new GetMethod();
+		try {
+			URI base = new URI(url, false);
+			method.setURI(new URI(base, "HttpBatchSendSM", false));
+			method.setQueryString(new NameValuePair[] { 
+					new NameValuePair("account", account),
+					new NameValuePair("pswd", pswd), 
+					new NameValuePair("mobile", mobile),
+					new NameValuePair("needstatus", String.valueOf(needstatus)), 
+					new NameValuePair("msg", msg),
+					new NameValuePair("extno", extno), 
+				});
+			int result = client.executeMethod(method);
+			if (result == HttpStatus.SC_OK) {
+				InputStream in = method.getResponseBodyAsStream();
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				byte[] buffer = new byte[1024];
+				int len = 0;
+				while ((len = in.read(buffer)) != -1) {
+					baos.write(buffer, 0, len);
+				}
+				System.out.println("短信发送返回数据   ========  "+baos.toString());
+				return URLDecoder.decode(baos.toString(), "UTF-8");
+			} else {
+				System.out.println("HTTP ERROR Status: " + method.getStatusCode() + ":" + method.getStatusText());
+				return "";
+			}
+		} finally {
+			method.releaseConnection();
+			}
+		}
 	
 }
