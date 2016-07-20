@@ -3,7 +3,6 @@ package com.yunguo.fragment;
 import java.util.Map;
 
 import com.yunguo.Bean.SetUpRent;
-import com.yunguo.houserowner_app.AddRentCardActivity;
 import com.yunguo.houserowner_app.CardMessageActivity;
 import com.yunguo.houserowner_app.R;
 import com.yunguo.houserowner_app.RenewalActivity;
@@ -28,8 +27,6 @@ public class PersonManageActivity extends Activity{
 	private Button registerCard;
 	private Button myhouse;
 	private Button mytenant;
-	private Button addcard,Frozen,Relieve;
-	
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +61,6 @@ public class PersonManageActivity extends Activity{
 		registerCard = (Button) findViewById(R.id.registerCard);
 		myhouse = (Button) findViewById(R.id.myhouse);
 		mytenant= (Button) findViewById(R.id.mytenant);
-		Frozen = (Button) findViewById(R.id.Cardice);
-		addcard = (Button) findViewById(R.id.addtenantcard);
-		Relieve = (Button) findViewById(R.id.relivecard);
 		
 		backimg = (ImageView) findViewById(R.id.backimg);
 	}
@@ -104,7 +98,6 @@ public class PersonManageActivity extends Activity{
 				Intent intent = new Intent(PersonManageActivity.this,CardMessageActivity.class);
 				intent.putExtra("type","权限");
 				intent.putExtra("UserId",map.get("UserId"));
-				intent.putExtra("CardStatus","1");
 				startActivity(intent);
 			}
 		});
@@ -115,7 +108,6 @@ public class PersonManageActivity extends Activity{
 				Intent intent = new Intent(PersonManageActivity.this,CardMessageActivity.class);
 				intent.putExtra("type","挂失");
 				intent.putExtra("UserId",map.get("UserId"));
-				intent.putExtra("CardStatus","1");
 				startActivity(intent);
 			}
 		});
@@ -124,9 +116,8 @@ public class PersonManageActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(PersonManageActivity.this,CardMessageActivity.class);
-				intent.putExtra("type","更换");
+				intent.putExtra("type","补办");
 				intent.putExtra("UserId",map.get("UserId"));
-				intent.putExtra("CardStatus","2");
 				intent.putExtra("HouseId",SetUpRent.getSetUpRent().getHouseId());
 				startActivity(intent);
 			}
@@ -138,7 +129,6 @@ public class PersonManageActivity extends Activity{
 				Intent intent = new Intent(PersonManageActivity.this,CardMessageActivity.class);
 				intent.putExtra("type","续期");
 				intent.putExtra("HouseId",SetUpRent.getSetUpRent().getHouseId());
-				intent.putExtra("CardStatus","1");
 				intent.putExtra("UserId",map.get("UserId"));
 				intent.putExtra("DoorId",map.get("DoorId"));
 				intent.putExtra("enTime",map.get("CheckOutTime"));
@@ -153,45 +143,7 @@ public class PersonManageActivity extends Activity{
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(PersonManageActivity.this,CardMessageActivity.class);
 				intent.putExtra("type","注销");
-				intent.putExtra("CardStatus","1");
 				intent.putExtra("UserId",map.get("UserId"));
-				startActivity(intent);
-			}
-		});
-		
-		Frozen.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(PersonManageActivity.this,CardMessageActivity.class);
-				intent.putExtra("type","冻结");
-				intent.putExtra("CardStatus","1");
-				intent.putExtra("UserId",map.get("UserId"));
-				intent.putExtra("HouseId",SetUpRent.getSetUpRent().getHouseId());
-				
-				startActivity(intent);
-			}
-		});
-		
-		addcard.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(PersonManageActivity.this,AddRentCardActivity.class);
-				intent.putExtra("UserId",map.get("UserId"));
-				startActivity(intent);
-			}
-		});
-		
-		Relieve.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent = new Intent(PersonManageActivity.this,CardMessageActivity.class);
-				intent.putExtra("type","解冻");
-				intent.putExtra("CardStatus","4");
-				intent.putExtra("UserId",map.get("UserId"));
-				intent.putExtra("HouseId",SetUpRent.getSetUpRent().getHouseId());
 				startActivity(intent);
 			}
 		});

@@ -5,18 +5,14 @@ import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 
-import com.yunguo.Bean.SetUpRent;
 import com.yunguo.houserowner_app.R;
 
 public class MyHouseInfoExpandableListAdapter extends BaseExpandableListAdapter{
@@ -87,7 +83,7 @@ public class MyHouseInfoExpandableListAdapter extends BaseExpandableListAdapter{
 	}
 
 	@Override
-	public View getChildView(final int groupPosition, int childPosition,
+	public View getChildView(int groupPosition, int childPosition,
 			boolean isLastChild, View convertView, ViewGroup parent) {
 		ItemHolder itemHolder = null;
 		   if (convertView == null) {
@@ -102,8 +98,6 @@ public class MyHouseInfoExpandableListAdapter extends BaseExpandableListAdapter{
 		    itemHolder.Householder = (TextView) convertView.findViewById(R.id.Householder);
 		    itemHolder.Tel = (TextView) convertView.findViewById(R.id.Tel);
 		    itemHolder.Address = (TextView) convertView.findViewById(R.id.Address);
-		    itemHolder.break_apply = (Button) convertView.findViewById(R.id.Break_Apply);
-		    itemHolder.power = (Button) convertView.findViewById(R.id.HousePower);
 		    convertView.setTag(itemHolder);
 		   } else {
 		    itemHolder = (ItemHolder) convertView.getTag();
@@ -116,30 +110,6 @@ public class MyHouseInfoExpandableListAdapter extends BaseExpandableListAdapter{
 		   itemHolder.Householder.setText(list.get(groupPosition).get("Householder")+"");
 		   itemHolder.Tel.setText(list.get(groupPosition).get("Tel")+"");
 		   itemHolder.Address.setText(list.get(groupPosition).get("Address")+"");
-		   itemHolder.break_apply.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Intent intent3 = new Intent();
-					//intent3.setAction("com.yunguo.houserowner_app.RemoteBreakDoorActivity");
-					intent3.setAction("RemoteBreakDoorActivity");
-					SetUpRent.getSetUpRent().setHouseId(list.get(groupPosition).get("HouseId"));
-					intent3.putExtra("type", "1");
-					context.startActivity(intent3);
-				}
-			   });
-			   itemHolder.power.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						Intent intent3 = new Intent();
-						//intent3.setAction("com.yunguo.houserowner_app.RemoteBreakDoorActivity");
-						intent3.setAction("RemoteBreakDoorActivity");
-						SetUpRent.getSetUpRent().setHouseId(list.get(groupPosition).get("HouseId"));
-						intent3.putExtra("type", "2");
-						context.startActivity(intent3);
-					}
-				   });
 		   return convertView;
 	}
 
@@ -154,6 +124,5 @@ public class MyHouseInfoExpandableListAdapter extends BaseExpandableListAdapter{
 
 	class ItemHolder {
 		  public TextView HouseId,HouseName,Floor,Number,Usage,Householder,Tel,Address;
-		  public Button break_apply,power;
 	 }
 }

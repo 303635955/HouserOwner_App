@@ -1,18 +1,13 @@
 package com.yunguo.houserowner_app;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.yunguo.Bean.SetUpRent;
 import com.yunguo.Util.HTTPUtil;
-import com.yunguo.fragment.PersonInfoActivity;
-import com.yunguo.houserowner.adpter.PersonAdapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -40,6 +35,7 @@ public class OwnerMessageActivity extends Activity {
 	private AnimationDrawable animaition;
 	private LinearLayout loadlinear;
 	private TextView showtext;
+	private TextView upUserPaw;
 	
 	private Button upTelbut;
 	
@@ -71,6 +67,7 @@ public class OwnerMessageActivity extends Activity {
 		IdCardNo = (TextView) findViewById(R.id.IdCardNo);
 		
 		upTelbut = (Button) findViewById(R.id.upTelbut);
+		upUserPaw = (TextView) findViewById(R.id.upUserPaw);
 	}
 	
 	public void initListView() {
@@ -101,13 +98,31 @@ public class OwnerMessageActivity extends Activity {
 			}
 		});
 		
+		
+		/**
+		 * 修改密码
+		 */
+		upUserPaw.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(OwnerMessageActivity.this,UpPasswordActivity.class);
+				intent.putExtra("OwnerId", Id.getText());
+				intent.putExtra("IdCardNo", IdCardNo.getText());
+				startActivity(intent);
+			}
+		});
+		
 		/**
 		 * 更换手机
 		 */
 		upTelbut.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+				Intent intent = new Intent(OwnerMessageActivity.this,UpTelActivity.class);
+				intent.putExtra("OwnerId", Id.getText());
+				intent.putExtra("IdCardNo", IdCardNo.getText());
+				intent.putExtra("TelNo", TelNo.getText());
+				startActivityForResult(intent, 0);
 			}
 		});
 		
@@ -176,7 +191,7 @@ public class OwnerMessageActivity extends Activity {
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
-			String url = "http://120.25.65.125:8118/HouseMobileApp/LandlordInfo";
+			String url = "http://192.168.1.151:8118/HouseMobileApp/LandlordInfo";
 			Map<String, String> houseid = new HashMap<String, String>();
 			houseid.put("OwnerId", SetUpRent.getSetUpRent().getOwnerId());
 			JSONObject js = new JSONObject(houseid);
@@ -224,4 +239,14 @@ public class OwnerMessageActivity extends Activity {
 		}
 		return map;
 	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		loadlinear.setVisibility(View.VISIBLE);
+		animaition.start();
+		new Thread(thread).start();
+	}
+	
+	
 }

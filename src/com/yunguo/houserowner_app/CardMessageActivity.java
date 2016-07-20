@@ -59,7 +59,6 @@ public class CardMessageActivity extends Activity{
 	
 	private String CarNo;
 	private String HouseId = "";
-	private String Status ="";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,7 +67,6 @@ public class CardMessageActivity extends Activity{
 		
 		UserId = getIntent().getStringExtra("UserId");
 		type = getIntent().getStringExtra("type");
-		Status = getIntent().getStringExtra("CardStatus");
 		
 		findView();
 		initListView();
@@ -125,19 +123,6 @@ public class CardMessageActivity extends Activity{
 					Intent intent = new Intent(CardMessageActivity.this,AddPermissionActivity.class);
 					intent.putExtra("CardNo", map.get("CardNo"));
 					startActivity(intent);
-				}else if(type.equals("续期")){
-					Intent intent = new Intent(CardMessageActivity.this,RenewalActivity.class);
-					intent.putExtra("CardNo", map.get("CardNo"));
-					intent.putExtra("DoorId", CardMessageActivity.this.getIntent().getStringExtra("DoorId"));
-					intent.putExtra("HouseId",CardMessageActivity.this.getIntent().getStringExtra("HouseId"));
-					intent.putExtra("enTime",map.get("EndTime"));
-					startActivity(intent);
-				}else if (type.equals("更换")) {
-					Intent intent = new Intent(CardMessageActivity.this,RegisterCardActivity.class);
-					intent.putExtra("CardNo", map.get("CardNo"));
-					intent.putExtra("UserId", CardMessageActivity.this.getIntent().getStringExtra("UserId"));
-					intent.putExtra("HouseId",CardMessageActivity.this.getIntent().getStringExtra("HouseId"));
-					startActivity(intent);
 				}else if(type.equals("挂失")){
 					CarNo = map.get("CardNo");
 					AlertDialog.Builder builder = new AlertDialog.Builder(CardMessageActivity.this);
@@ -153,8 +138,21 @@ public class CardMessageActivity extends Activity{
 							});
 					builder.setNegativeButton("取消", null);
 					builder.create().show();
+				}else if(type.equals("补办")){
+					Intent intent = new Intent(CardMessageActivity.this,RegisterCardActivity.class);
+					intent.putExtra("CardNo", map.get("CardNo"));
+					intent.putExtra("UserId", CardMessageActivity.this.getIntent().getStringExtra("UserId"));
+					intent.putExtra("HouseId",CardMessageActivity.this.getIntent().getStringExtra("HouseId"));
+					startActivity(intent);
+				}else if(type.equals("续期")){
+					Intent intent = new Intent(CardMessageActivity.this,RenewalActivity.class);
+					intent.putExtra("CardNo", map.get("CardNo"));
+					intent.putExtra("DoorId", CardMessageActivity.this.getIntent().getStringExtra("DoorId"));
+					intent.putExtra("HouseId",CardMessageActivity.this.getIntent().getStringExtra("HouseId") );
+					intent.putExtra("enTime",map.get("EndTime"));
+					startActivity(intent);
 				}else if(type.equals("注销")){
-					CarNo = map.get("CardNo");
+					cardid = map.get("CardNo");
 					new AlertDialog.Builder(CardMessageActivity.this).setTitle("注销卡号").setMessage("确认注销？")
 					.setNegativeButton("取消", new  DialogInterface.OnClickListener(){
 						public void onClick(DialogInterface dialog, int which) {
@@ -163,30 +161,6 @@ public class CardMessageActivity extends Activity{
 					.setPositiveButton("确定", new  DialogInterface.OnClickListener(){
 						public void onClick(DialogInterface dialog, int which) {
 							new Thread(thread3).start();
-						}
-					}).show();
-				}else if (type.equals("冻结")) {
-					CarNo = map.get("CardNo");
-					new AlertDialog.Builder(CardMessageActivity.this).setTitle("冻结卡号").setMessage("确认冻结？")
-					.setNegativeButton("取消", new  DialogInterface.OnClickListener(){
-						public void onClick(DialogInterface dialog, int which) {
-						}
-					})
-					.setPositiveButton("确定", new  DialogInterface.OnClickListener(){
-						public void onClick(DialogInterface dialog, int which) {
-							new Thread(thread4).start();
-						}
-					}).show();
-				}else if (type.equals("解冻")) {
-					CarNo = map.get("CardNo");
-					new AlertDialog.Builder(CardMessageActivity.this).setTitle("解挂卡号").setMessage("确认解挂？")
-					.setNegativeButton("取消", new  DialogInterface.OnClickListener(){
-						public void onClick(DialogInterface dialog, int which) {
-						}
-					})
-					.setPositiveButton("确定", new  DialogInterface.OnClickListener(){
-						public void onClick(DialogInterface dialog, int which) {
-							new Thread(thread4).start();
 						}
 					}).show();
 				}
@@ -222,9 +196,7 @@ public class CardMessageActivity extends Activity{
 				listView.setAdapter(adapter);
 				masg = "查询成功！";
 				break;
-			case 1:
-				loadlinear.setVisibility(View.VISIBLE);
-				listView.setVisibility(View.GONE);
+			case 1: 
 				masg = "还没有门卡额！";
 				gifimg.setBackgroundResource(R.drawable.gou);
 				showtext.setText(masg);
@@ -291,22 +263,6 @@ public class CardMessageActivity extends Activity{
 		};
 	};
 	
-	Handler handler4 = new Handler(){
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case 0:
-				masg = "操作成功！";
-				break;
-			case 1:
-				masg = "操作失败，请检查网络！";
-				break;
-			case 2:
-				masg = "操作失败，请检查网络！";
-				break;
-			}
-			Toast.makeText(CardMessageActivity.this, masg, Toast.LENGTH_SHORT).show();
-		};
-	};
 	
 	/**
 	 * 门卡挂失
@@ -363,8 +319,7 @@ public class CardMessageActivity extends Activity{
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
-			//String url = "http://120.25.65.125:8118/HouseMobileApp/GetCardlistByTenaId";
-			String url = "http://192.168.1.151:8118/HouseMobileApp/GetCardlistByTenaId";
+			String url = "http://120.25.65.125:8118/HouseMobileApp/GetCardlistByTenaId";
 			Map<String, String> houseid = new HashMap<String, String>();
 			houseid.put("TenaId", UserId);
 			JSONObject js = new JSONObject(houseid);
@@ -432,44 +387,7 @@ public class CardMessageActivity extends Activity{
 			}
 		}
 	};
-	
-	private Thread thread4  = new Thread(){
-		@Override
-		public void run() {
-			String url = "http://192.168.1.151:8118/HouseMobileApp/HouseFreszeCard";
-			Map<String, String> houseid = new HashMap<String, String>();
-			houseid.put("CardNo",CarNo);
-			houseid.put("HouseId", CardMessageActivity.this.getIntent().getStringExtra("HouseId"));
-			if(type.equals("冻结")){
-				houseid.put("State", "2");
-			}else{
-				houseid.put("State", "1");
-			}
-			JSONObject js = new JSONObject(houseid);
-			String str = js.toString();
-			String res = HTTPUtil.PostStringToUrl(url, str);
-			if(res.equals("") || res == null){
-				handler4.sendEmptyMessage(2);
-				return;
-			}
-			JSONObject jsonObject2 = null;
-			Message mes = new Message();
-			try {
-				jsonObject2 = new JSONObject(res);
-				String ret = jsonObject2.get("ret")+"";
-				if(ret.equals("1")){
-					handler4.sendEmptyMessage(0);
-					return;
-				}else{
-					handler4.sendEmptyMessage(1);
-					return;
-				}
-			} catch (JSONException e) {
-				e.printStackTrace();
-				handler4.sendEmptyMessage(2);
-			}
-		}
-	};
+
 
 	public List<Map<String, String>> getHouseInfo(String res) {
 	 List<Map<String, String>> tmpdata = new ArrayList<Map<String, String>>();
@@ -479,13 +397,10 @@ public class CardMessageActivity extends Activity{
 			for (int i = 0; i < jsonArray.length(); i++) {
 				Map<String, String> map = new HashMap<String, String>();
 				JSONObject jsonObjectSon = (JSONObject) jsonArray.opt(i);
-				if(jsonObjectSon.getString("Status").equals(Status)){
-					map.put("CardNo", jsonObjectSon.getString("CardNo"));
-					map.put("Status", jsonObjectSon.getString("Status"));
-					map.put("BeginTime", jsonObjectSon.getString("BeginTime"));
-					map.put("EndTime", jsonObjectSon.getString("EndTime"));
-					tmpdata.add(map);
-				}
+				map.put("CardNo", jsonObjectSon.getString("CardNo"));
+				map.put("BeginTime", jsonObjectSon.getString("BeginTime"));
+				map.put("EndTime", jsonObjectSon.getString("EndTime"));
+				tmpdata.add(map);
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
