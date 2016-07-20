@@ -52,6 +52,13 @@
         <activity android:name="com.yunguo.houserowner_app.UpUserPasswordActivity"></activity>
         <activity android:name="com.yunguo.houserowner_app.MSNActivity"></activity>
         <activity android:name="com.yunguo.houserowner_app.UpDatepasswordActivity"></activity>
+       
+        <activity android:name="com.yunguo.houserowner_app.RemoteBreakDoorActivity">
+             <intent-filter>
+                 <action android:name="RemoteBreakDoorActivity" />
+                 <category android:name="android.intent.category.DEFAULT" />
+             </intent-filter>
+        </activity>
         
         <activity 
             android:name="com.yunguo.houserowner_app.RegisterCardActivity"
@@ -59,6 +66,10 @@
         
          <activity 
             android:name="com.yunguo.houserowner_app.RenewalActivity"
+            android:theme="@android:style/Theme.Dialog"></activity>
+         
+          <activity 
+            android:name="com.yunguo.houserowner_app.AddRentCardActivity"
             android:theme="@android:style/Theme.Dialog"></activity>
         
         <activity 
