@@ -156,7 +156,7 @@ public class MainActivity extends ActivityGroup {
 			map.put("version",version);
 			try {
 				JSONObject jsonObject = new JSONObject(map.toString());
-				String ret = HTTPUtil.PostStringToUrl("http://120.25.65.125:8118/Client1/AppUpdate",jsonObject.toString());
+				String ret = HTTPUtil.PostStringToUrl("http://192.168.1.151:8118/Client1/AppUpdate",jsonObject.toString());
 				JSONObject jsonObject2 =new JSONObject(ret);
 				String versionCode = (String) jsonObject2.get("match").toString();
 				if(versionCode.equals("0")){

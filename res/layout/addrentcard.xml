@@ -1,0 +1,162 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="260dp"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/renewal_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="#339999"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="添加门卡"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+			<LinearLayout 
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal"
+			    android:weightSum="4">
+			    
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="添加卡号："
+                android:textColor="#339999"
+                android:textSize="16dip" />
+
+            <EditText
+                android:id="@+id/add_card_text"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dip"
+                android:layout_weight="2"
+                android:background="@drawable/qq_edit_login"
+                />
+
+            <Button
+                android:id="@+id/addgetdoorid"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="5dip"
+                android:layout_marginTop="10dip"
+                android:layout_weight="1"
+                android:background="#5CA7BA"
+                android:text="自动获取"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp" />
+			</LinearLayout>
+
+        </LinearLayout>
+        
+		 <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="开始时间："
+                android:textColor="#339999"
+                android:textSize="16dip" />
+
+            <EditText
+                android:id="@+id/add_begindate_text"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dip"
+                android:layout_weight="2"
+                android:background="@drawable/qq_edit_login"
+                android:editable="false" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="到期时间："
+                android:textColor="#339999"
+                android:textSize="16dip" />
+
+            <EditText
+                android:id="@+id/add_date_text"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dip"
+                android:layout_weight="2"
+                android:background="@drawable/qq_edit_login"
+                android:editable="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#FAFAFA"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/add_sure"
+                android:layout_width="0dp"
+                android:layout_height="40dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:background="#5CA7BA"
+                android:text="确定"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/add_cancle"
+                android:layout_width="0dp"
+                android:layout_height="40dip"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="#5CA7BA"
+                android:text="取消"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

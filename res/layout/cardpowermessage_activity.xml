@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+   <LinearLayout
+        android:id="@+id/powertitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="#339999"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/powerbackimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dip"
+            android:src="@drawable/nav_but_back2_default"/>
+        <TextView 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:text="卡权限查看"/>
+    </LinearLayout>
+
+     <LinearLayout
+        android:id="@+id/loadlinearpower"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/powertitle"
+        android:gravity="center"
+        android:orientation="vertical" >
+        <ImageView
+            android:id="@+id/powergifimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/powershowtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加载中..." />
+    </LinearLayout> 
+    
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/powerhome_expandableListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/powertitle"/>
+
+</RelativeLayout>

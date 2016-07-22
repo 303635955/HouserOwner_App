@@ -10,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,7 +30,6 @@ import com.handmark.pulltorefresh.library.PullToRefreshExpandableListView;
 import com.yunguo.Bean.SetUpRent;
 import com.yunguo.Util.HTTPUtil;
 import com.yunguo.houserowner.adpter.MyHouseInfoExpandableListAdapter;
-import com.yunguo.houserowner_app.OwnerMessageActivity;
 import com.yunguo.houserowner_app.R;
 
 public class HouseInfoActivity extends Activity {
@@ -160,7 +158,7 @@ public class HouseInfoActivity extends Activity {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			String url = "http://120.25.65.125:8118/HouseMobileApp/HouseListView";
+			String url = "http://192.168.1.151:8118/HouseMobileApp/HouseListView";
 			Map<String, String> houseid = new HashMap<String, String>();
 			houseid.put("ownerId",SetUpRent.getSetUpRent().getOwnerId());
 			JSONObject js = new JSONObject(houseid);

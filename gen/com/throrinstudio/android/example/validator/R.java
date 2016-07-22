@@ -16,12 +16,12 @@ public final class R {
 		public static final int ic_launcher = 0x7f020020;
 	}
 	public static final class id {
-		public static final int widget_okcancelbar_cancel = 0x7f0800ae;
-		public static final int widget_okcancelbar_ok = 0x7f0800af;
+		public static final int widget_okcancelbar_cancel = 0x7f0800c4;
+		public static final int widget_okcancelbar_ok = 0x7f0800c5;
 	}
 	public static final class layout {
-		public static final int main = 0x7f030017;
-		public static final int widget_ok_cancel_bar = 0x7f03002e;
+		public static final int main = 0x7f03001a;
+		public static final int widget_ok_cancel_bar = 0x7f030033;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f050000;
